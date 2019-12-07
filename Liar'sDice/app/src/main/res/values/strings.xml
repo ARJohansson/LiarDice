@@ -1,0 +1,25 @@
+<resources>
+    <string name="app_name">Liar\'s Dice</string>
+    <string name="onBoard">s on the board.</string>
+    <string name="numOnDie">1</string>
+    <string name="winnerLabel">Somebody won round/game</string>
+    <string name="rollbtn">Roll</string>
+    <string name="submitBtn">Submit</string>
+    <string name="computerBid">2 1s on the board.</string>
+    <string name="computerBluff">You are bluffing.</string>
+    <string name="callBluffBtn">Bluffing!</string>
+    <string name="newBidBtn">New Bid</string>
+    <string name="checkBtn">Check</string>
+    <string-array name="numOfDie">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+        <item>6</item>
+        <item>7</item>
+        <item>8</item>
+        <item>9</item>
+        <item>10</item>
+    </string-array>
+</resources>
