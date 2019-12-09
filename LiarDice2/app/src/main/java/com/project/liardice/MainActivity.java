@@ -358,7 +358,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
         int n;
         n = game.getPlayerDie();
         if(view.getId() == R.id.rollButton){
-            if(game.getRound() == 0){
+            if(game.getRound() == 0 && game.getCompBid() == ""){
                 rollDie(5);
                 game.compRoll();
             }
