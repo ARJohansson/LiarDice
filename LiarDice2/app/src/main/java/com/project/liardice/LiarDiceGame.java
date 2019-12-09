@@ -112,12 +112,22 @@ public class LiarDiceGame {
             setIsBluff(false);
             // chooses random numbers for the computer's bid until one
             // or both of them are larger than the numbers in the user's bid
-            do {
-                setCompBidNumOfDie(rand.nextInt(y) + 1);
-                setCompBidNumOnDie(rand.nextInt(6) + 1);
-            } while(compBidNumOfDie <= numOfDie ||
-                    compBidNumOnDie <= numOnDie &&
-                    compBidNumOfDie <= getBoardDie());
+            if(numOnDie == 6){
+                do {
+                    setCompBidNumOfDie(rand.nextInt(y) + 1);
+                    setCompBidNumOnDie(6);
+                }while (compBidNumOfDie <= numOfDie &&
+                        compBidNumOfDie > getBoardDie() &&
+                        compBidNumOnDie > 0);
+            }
+            else {
+                do {
+                    setCompBidNumOfDie(rand.nextInt(y) + 1);
+                    setCompBidNumOnDie(rand.nextInt(6) + 1);
+                } while (compBidNumOfDie <= numOfDie ||
+                        compBidNumOnDie <= numOnDie &&
+                        compBidNumOfDie > getBoardDie());
+            }
             // Sets the computers bid (ex: 2 1s on the board.)
             setCompBid(getCompBidNumOfDie() + " " + getCompBidNumOnDie() + "s on the board.");
         }

@@ -226,6 +226,12 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
         }
     }
 
+    public void showHiddenPictures(int numPics){
+        for (int i = 1; i <= numPics; i++){
+            showImage(i);
+        }
+    }
+
     public void hideImage(int whichPic){
         switch (whichPic){
             case 1:
@@ -242,6 +248,26 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
                 break;
             case 5:
                 die1.setVisibility(View.INVISIBLE);
+                break;
+        }
+    }
+
+    public void showImage(int whichPic){
+        switch (whichPic){
+            case 1:
+                die5.setVisibility(View.VISIBLE);
+                break;
+            case 2:
+                die4.setVisibility(View.VISIBLE);
+                break;
+            case 3:
+                die3.setVisibility(View.VISIBLE);
+                break;
+            case 4:
+                die2.setVisibility(View.VISIBLE);
+                break;
+            case 5:
+                die1.setVisibility(View.VISIBLE);
                 break;
         }
     }
@@ -278,17 +304,20 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
                 if (instance >= x){
                     game.setCompDie(game.getCompDie() - 1);
                     game.setWin("Player");
+                    checkUserBid = false;
                 }
                 else {
                     game.setPlayerDie(game.getPlayerDie() - 1);
                     game.setWin("Computer");
                     hidePictures(5 - game.getPlayerDie());
+                    checkUserBid = false;
                 }
             }
             else {
                 game.setPlayerDie(game.getPlayerDie() - 1);
                 game.setWin("Computer");
                 hidePictures(5 - game.getPlayerDie());
+                checkUserBid = false;
             }
         }
         else if (whoCalled == "player"){
@@ -308,15 +337,18 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
                     game.setPlayerDie(game.getPlayerDie() - 1);
                     game.setWin("Computer");
                     hidePictures(5 - game.getPlayerDie());
+                    checkUserBid = false;
                 }
                 else {
                     game.setCompDie(game.getCompDie() - 1);
                     game.setWin("Player");
+                    checkUserBid = false;
                 }
             }
             else {
                 game.setCompDie(game.getCompDie() - 1);
                 game.setWin("Player");
+                checkUserBid = false;
             }
         }
     }
@@ -330,12 +362,14 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
                 rollDie(5);
                 game.compRoll();
             }
-            else if(game.getIsBluff() == true){
+            else if(game.getIsBluff() == true && game.getIsGameOver() == false){
                 rollDie(n);
                 game.compRoll();
                 hidePictures( 5 - n);
+                game.setIsBluff(false);
             }
             else if(game.getIsGameOver() == true){
+                showHiddenPictures(5);
                 game.resetGame();
                 rollDie(5);
                 game.compRoll();
