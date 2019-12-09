@@ -34,7 +34,7 @@ public class SecondActivity extends AppCompatActivity
     static int playerDieNum;
     public static String bluffing;
 
-    public static final String COMPUTER_BID = "computer bid";
+    //public static final String COMPUTER_BID = "computer bid";
 
 
     @Override
@@ -72,7 +72,7 @@ public class SecondActivity extends AppCompatActivity
     public void onRestoreInstanceState(Bundle savedInstanceState){
         super.onRestoreInstanceState(savedInstanceState);
         String playerBid = savedInstanceState.getString(PLAYER_BID);
-        String computerBid = savedInstanceState.getString(COMPUTER_BID);
+        String computerBid = savedInstanceState.getString(COMP_BID);
         int bidDie = savedInstanceState.getInt(BID_DIE);
         int bidNumOfDie = savedInstanceState.getInt(BID_NUM_OF_DIE);
         int roundNum = savedInstanceState.getInt(ROUND);
@@ -97,7 +97,9 @@ public class SecondActivity extends AppCompatActivity
             game= new LiarDiceGame();
         }
 
-        game.compBid(playerNumOfDie, playerDieNum);
+        if (game.getCompBid() == "") {
+            game.compBid(playerNumOfDie, playerDieNum);
+        }
         if (game.getIsBluff())
         {
             bluffing = "You are bluffing.";
@@ -180,7 +182,7 @@ public class SecondActivity extends AppCompatActivity
         outState.putInt(BID_DIE, bidDie);
         outState.putInt(BID_NUM_OF_DIE, bidNumOfDie);
         outState.putInt(ROUND, game.getRound());
-        outState.putString(COMPUTER_BID, game.getCompBid());
+        outState.putString(COMP_BID, game.getCompBid());
         outState.putInt(COMP_BID_NUM_OF_DIE, game.getCompBidNumOfDie());
         outState.putInt(COMP_BID_NUM_ON_DIE, game.getCompBidNumOnDie());
         super.onSaveInstanceState(outState);

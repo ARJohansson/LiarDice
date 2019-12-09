@@ -38,6 +38,11 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
     protected static final String PLAYER_BID = "playerBid";
     protected static final String BID_NUM_OF_DIE = "number of bid die";
     protected static final String BID_DIE = "bid die";
+    private static final String DIE1 = "die 1";
+    private static final String DIE2 = "die 2";
+    private static final String DIE3 = "die 3";
+    private static final String DIE4 = "die 4";
+    private static final String DIE5 = "die 5";
     protected static final int REQUEST_1 = 1;
 
     // Sent back to the first fragment from second fragment
@@ -95,8 +100,28 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
             bidDie = savedInstanceState.getInt(BID_DIE);
             bidNumOfDie = savedInstanceState.getInt(BID_NUM_OF_DIE);
             roundNum = savedInstanceState.getInt(ROUND);
+            int Die1 = savedInstanceState.getInt(DIE1);
+            int Die2 = savedInstanceState.getInt(DIE2);
+            int Die3 = savedInstanceState.getInt(DIE3);
+            int Die4 = savedInstanceState.getInt(DIE4);
+            int Die5 = savedInstanceState.getInt(DIE5);
 
-            winner.setText(winnerText + "won round");
+            int die = dieImage(Die1);
+            setImage(die, 1);
+            die = dieImage(Die2);
+            setImage(die, 2);
+            die = dieImage(Die3);
+            setImage(die, 3);
+            die = dieImage(Die4);
+            setImage(die, 4);
+            die = dieImage(Die5);
+            setImage(die, 5);
+
+            if (winnerText != null) {
+                winner.setText(winnerText + " won round");
+            }
+            else
+                winner.setText("");
 
             NumberFormat integer = NumberFormat.getIntegerInstance();
             numOfDie.setPrompt(integer.format(bidNumOfDie));
@@ -134,6 +159,11 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
         outState.putInt(BID_DIE, bidDie);
         outState.putInt(BID_NUM_OF_DIE, bidNumOfDie);
         outState.putInt(ROUND, game.getRound());
+        outState.putInt(DIE1, playerDice.get(0));
+        outState.putInt(DIE2, playerDice.get(1));
+        outState.putInt(DIE3, playerDice.get(2));
+        outState.putInt(DIE4, playerDice.get(3));
+        outState.putInt(DIE5, playerDice.get(4));
         super.onSaveInstanceState(outState);
     }
 
@@ -413,6 +443,7 @@ public class MainActivity extends AppCompatActivity implements OnClickListener, 
                 playBid = bidNumOfDie + " " + bidDie + bid.getText().toString();
 
                 game.setPlayerBid(playBid);
+                game.setCompBid("");
                 // Toast.makeText(getActivity(), playBid, Toast.LENGTH_LONG).show();
                 //SecondActivity.continueGame(game);
 
