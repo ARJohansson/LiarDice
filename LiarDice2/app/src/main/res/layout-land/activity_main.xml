@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    tools:layout_editor_absoluteX="0dp"
+    tools:layout_editor_absoluteY="81dp">
+
+    <ImageView
+        android:id="@+id/dieImageView3"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toStartOf="@+id/dieImageView2"
+        app:layout_constraintStart_toEndOf="@+id/dieImageView1"
+        app:layout_constraintTop_toBottomOf="@+id/dieImageView1"
+        app:srcCompat="@drawable/die6side1" />
+
+    <ImageView
+        android:id="@+id/dieImageView1"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/winnerTextView"
+        app:srcCompat="@drawable/die6side1" />
+
+    <ImageView
+        android:id="@+id/dieImageView4"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="@+id/dieImageView1"
+        app:layout_constraintStart_toStartOf="@+id/dieImageView1"
+        app:layout_constraintTop_toBottomOf="@+id/dieImageView3"
+        app:srcCompat="@drawable/die6side1" />
+
+    <ImageView
+        android:id="@+id/dieImageView5"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintEnd_toEndOf="@+id/dieImageView2"
+        app:layout_constraintStart_toStartOf="@+id/dieImageView2"
+        app:layout_constraintTop_toBottomOf="@+id/dieImageView3"
+        app:srcCompat="@drawable/die6side1" />
+
+    <ImageView
+        android:id="@+id/dieImageView2"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_marginStart="80dp"
+        app:layout_constraintStart_toEndOf="@+id/dieImageView1"
+        app:layout_constraintTop_toTopOf="@+id/dieImageView1"
+        app:srcCompat="@drawable/die6side1" />
+
+    <Button
+        android:id="@+id/rollButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="15dp"
+        android:text="@string/rollbtn"
+        app:layout_constraintBottom_toBottomOf="@+id/dieImageView3"
+        app:layout_constraintStart_toEndOf="@+id/dieImageView2"
+        app:layout_constraintTop_toTopOf="@+id/dieImageView3" />
+
+    <Spinner
+        android:id="@+id/numSpinner"
+        android:layout_width="75dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="24dp"
+        android:layout_marginTop="44dp"
+        android:entries="@array/numOfDie"
+        app:layout_constraintStart_toEndOf="@+id/rollButton"
+        app:layout_constraintTop_toBottomOf="@+id/winnerTextView" />
+
+    <EditText
+        android:id="@+id/numOnDieEditText"
+        android:layout_width="75dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:ems="10"
+        android:inputType="number"
+        android:text="@string/numOnDie"
+        android:textAlignment="textEnd"
+        android:textColor="#000000"
+        app:layout_constraintStart_toEndOf="@+id/numSpinner"
+        app:layout_constraintTop_toTopOf="@+id/numSpinner" />
+
+    <TextView
+        android:id="@+id/onBoardTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="30dp"
+        android:text="@string/onBoard"
+        android:textAlignment="viewStart"
+        android:textColor="#000000"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/numOnDieEditText"
+        app:layout_constraintStart_toEndOf="@+id/numOnDieEditText"
+        app:layout_constraintTop_toTopOf="@+id/numOnDieEditText" />
+
+    <Button
+        android:id="@+id/submitButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/submitBtn"
+        app:layout_constraintEnd_toEndOf="@+id/numOnDieEditText"
+        app:layout_constraintStart_toStartOf="@+id/numOnDieEditText"
+        app:layout_constraintTop_toBottomOf="@+id/rollButton" />
+
+    <TextView
+        android:id="@+id/winnerTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="206dp"
+        android:layout_marginEnd="207dp"
+        android:text="@string/winnerLabel"
+        android:textAlignment="center"
+        android:textColor="#000000"
+        android:textSize="25sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        tools:layout_editor_absoluteY="34dp" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
